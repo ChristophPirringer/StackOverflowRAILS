@@ -8,6 +8,7 @@ class AnswersController < ApplicationController
     @post = Post.find(params[:post_id])
     @answer = @post.answers.new(answer_params)
     if @answer.save
+      flash[:notice] = "Answer successfully added!"
       redirect_to post_path(@answer.post)
     else
       render :new

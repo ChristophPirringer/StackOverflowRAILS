@@ -1,25 +1,32 @@
+<% content_for(:title, "Posts | One of Them") %>
+
 <h1><%= @post.author %></h1>
 <h1><%= @post.name %></h1>
 <h1><%= @post.content %></h1>
 
+<% if current_user %>
+  <% if @post.answers.any? %>
 
-<% if @post.answers.any? %>
-  <h4>Here are the answers for this post:</h4>
+    <h4>Here are the answers for this post:</h4>
 
-  <ul>
-    <% @post.answers.each do |answer| %>
-      <li>
-        <%= answer.author %> |
-        <%= answer.content %> |
-        <%= link_to "Edit", edit_post_answer_path(@post, answer) %> |
-        <%= link_to "Delete", post_answer_path(@post, answer),
-                                 :data => {:confirm => "Are you sure?",
-                                                :method => "delete"} %>
-      </li>
-    <% end %>
-  </ul>
+    <ul>
+      <% @post.answers.each do |answer| %>
+        <li>
+          <%= answer.author %> |
+          <%= answer.content %> |
+          <%= link_to "Edit", edit_post_answer_path(@post, answer) %> |
+          <%= link_to "Delete", post_answer_path(@post, answer),
+                                   :data => {:confirm => "Are you sure?",
+                                                  :method => "delete"} %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no answers yet!</p>
+  <% end %>
+
 <% else %>
-  <p>There are no answers yet!</p>
+  <p>You need to be logged in to see this content!</p>
 <% end %>
 
 <p><%= link_to "Add an answer", new_post_answer_path(@post) %></p>

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  helper CounterHelper
+  before_filter :authorize, only: [:edit, :update, :destroy, :new, :create]
   def index
     @posts = Post.all
   end
@@ -14,6 +16,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      flash[:notice] = "Post successfully added!"
       redirect_to  posts_path
     else
       render :new
@@ -35,7 +38,8 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destrpy
+    @post.destroy
+    flash[:alert] = "Post successfully deleted!"
     redirect_to posts_path
   end
 

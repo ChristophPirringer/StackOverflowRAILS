@@ -1,10 +1,14 @@
+<% content_for(:title, "Posts | All of Them") %>
+
 <h1>Posts</h1>
 
 <ul>
   <% @posts.each do |post| %>
-    <li><%= link_to post.name, post_path(post) %></li>
+    <li><%= link_to post.name, post_path(post) %> <%= post.created_at %></li>
   <% end %>
 </ul>
 <hr>
 
 <%= link_to "New Post", new_post_path %>
+
+<%= post_number_counter(@posts) %>

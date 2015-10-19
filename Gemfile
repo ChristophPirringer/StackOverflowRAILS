@@ -7,6 +7,10 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
+# gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', '3.1.2'
+
+# gem 'protected_attributes'
 
 group :development do
   gem 'byebug'
@@ -24,4 +28,6 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'simplecov', require: false
 end
