@@ -17,7 +17,11 @@
           <%= link_to "Edit", edit_post_answer_path(@post, answer) %> |
           <%= link_to "Delete", post_answer_path(@post, answer),
                                    :data => {:confirm => "Are you sure?",
-                                                  :method => "delete"} %>
+                                                  :method => "delete"} %> |
+          <%= link_to "The Best",post_answer_path(@post, answer, best: true), method: "patch" %> |
+          <% if answer.best %>
+            "cool stuff"
+          <% end %>
         </li>
       <% end %>
     </ul>

@@ -1,0 +1,15 @@
+<% content_for(:title, "Users | All of Them") %>
+
+<h1>Users</h1>
+
+<ul>
+  <% @users.each do |user| %>
+  <li><%= "Edit: "%><%= link_to user.email, edit_user_path(user) %><%= link_to "Delete", user_path(user),
+                           :data => {:confirm => "Are you sure?",
+                                          :method => "delete"} %></li>
+
+  <% end %>
+</ul>
+
+
+<p><%= link_to "Return to home", posts_path %></p>

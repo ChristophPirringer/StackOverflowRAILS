@@ -8,6 +8,19 @@
 </head>
 <body>
 
+  <% if current_user   && current_user.administrator%>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="icon-bar"><%= link_to "Administrate Users", users_path%></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <% end %>
+
+
   <% if current_user %>
     Logged in as <%= current_user.email %>
     <%= link_to "Log Out", logout_path%>

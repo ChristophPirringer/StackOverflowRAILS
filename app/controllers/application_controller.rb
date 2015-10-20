@@ -13,4 +13,12 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to login_url, alert: "Not authorized!" if current_user.nil?
   end
+
+  def admin_check
+    redirect_to posts_path, alert: "Not an admin!" if current_user.administrator === false
+  end
+  # 
+  # def the_author
+  #   redirect_to post_path(post), alert: "Not the author!" if post.author != current_user
+  # end
 end

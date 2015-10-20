@@ -4,11 +4,16 @@
 
 <ul>
   <% @posts.each do |post| %>
-    <li><%= link_to post.name, post_path(post) %> <%= post.created_at %></li>
+    <li><%= link_to post.name, post_path(post) %> <%= post.created_at.to_date %> <%= "  Votes: +" %><%= post.upvotes.count %></li>
+    <%= form_for [post, @upvote] do |f| %>
+      <%= f.hidden_field :user, value: current_user %>
+      <%= f.submit 'Upvote', class: 'upvote-submit' %>
+    <% end %>
   <% end %>
 </ul>
 <hr>
 
+
 <%= link_to "New Post", new_post_path %>
 
-<%= post_number_counter(@posts) %>
+<%= Post.created_today(Date.today) %>

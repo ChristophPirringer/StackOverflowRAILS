@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
-  helper CounterHelper
+
   before_filter :authorize, only: [:edit, :update, :destroy, :new, :create]
   def index
     @posts = Post.all
+    @upvote = Upvote.new
   end
 
   def show

@@ -1,0 +1,23 @@
+<%= render "layouts/errors", :object => @user %>
+
+<%= form_for @user do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= radio_button_tag(:administrator, false) %>
+    <%= label_tag(:not_admin, "I am no admin") %>
+    <%= radio_button_tag(:administrator, true) %>
+    <%= label_tag(:admin, "I'm an admin") %>
+  </div>
+  <div class="actions"><%= f.submit "Sign Up" %></div>
+<% end %>
